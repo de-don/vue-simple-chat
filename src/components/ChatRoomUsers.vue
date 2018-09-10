@@ -1,6 +1,6 @@
 <template>
   <aside class="menu">
-    <p class="menu-label">Online ow</p>
+    <p class="menu-label">Online now</p>
 
     <ul class="menu-list">
       <li v-for="user in users" :key="user.uid">
