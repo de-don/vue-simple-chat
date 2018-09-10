@@ -115,7 +115,7 @@ export default {
             this.$store.commit('SET_USERNAME', data.val().name);
           });
 
-        this.$router.push('/chat');
+        this.$router.push('/chat/general');
       }
     });
   }

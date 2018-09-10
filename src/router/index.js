@@ -2,7 +2,6 @@ import Vue from 'vue';
 import Router from 'vue-router';
 import Login from '../components/Login';
 import ChatRoom from '../components/ChatRoom';
-import store from '../store';
 
 import { FirebaseAuth } from '../library/Database';
 
@@ -20,16 +19,9 @@ let router = new Router({
       component: ChatRoom
     },
     {
-      path: '/logout',
-      beforeEnter(to, _from, next) {
-        FirebaseAuth.signOut().then(() => {
-          store.commit('LOGOUT');
-          next({
-            path: '/login',
-          });
-        });
-      }
-    },
+      path: '/chat/:slug',
+      component: ChatRoom
+    }
   ]
 });
 
@@ -42,7 +34,7 @@ router.beforeEach((to, _from, next) => {
     });
   } else if (auth.currentUser !== null && to.path === '/') {
     next({
-      path: '/chat'
+      path: '/chat/general'
     });
   } else {
     next();
