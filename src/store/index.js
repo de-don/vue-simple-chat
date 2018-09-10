@@ -22,6 +22,12 @@ export default new Vuex.Store({
     },
     SET_USERNAME (state, username) {
       state.username = username;
+    },
+    LOGOUT (state) {
+      state.loggedin = false;
+      state.uid = '';
+      state.email = '';
     }
+
   }
 })

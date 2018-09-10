@@ -87,7 +87,7 @@ export default {
   methods: {
     login() {
       FirebaseAuth.signInWithEmailAndPassword(this.email, this.password)
-        .catch(() => {
+        .catch((error) => {
           this.loginError = error.message;
         });
     },
@@ -107,9 +107,9 @@ export default {
   created() {
     FirebaseAuth.onAuthStateChanged((user) => {
       if (user) {
-        this.$store.commit('SET_LOGGEDIN', { uid: user.uid, email: user.email});
+        this.$store.commit('SET_LOGGEDIN', { uid: user.uid, email: user.email });
 
-        FirebaseDb.ref('users/' + user.id)
+        FirebaseDb.ref('users/' + user.uid)
           .once('value')
           .then((data) => {
             this.$store.commit('SET_USERNAME', data.val().name);

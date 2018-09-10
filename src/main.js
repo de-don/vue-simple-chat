@@ -9,6 +9,8 @@ import 'firebase/auth';
 import { FirebaseAuth } from '@/library/Database';
 
 import VeeValidate from 'vee-validate';
+import VueMoment from 'vue-moment';
+import moment from 'moment-timezone';
 
 import 'bulma/css/bulma.css';
 
@@ -19,6 +21,9 @@ import FontAwesomeSolid from '@fortawesome/fontawesome-free-solid';
 FontAwesome.library.add(FontAwesomeSolid);
 Vue.component('fa-icon', VueFontAwesome);
 Vue.use(VeeValidate);
+Vue.use(VueMoment, {
+  moment,
+})
 
 Vue.config.productionTip = false;
 
